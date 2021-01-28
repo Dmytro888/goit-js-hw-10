@@ -1,5 +1,5 @@
 const refThemeSwitcher = document.querySelector('.theme-switch__toggle');
-const bodyTheme = document.body;
+const refBody = document.body;
 
 const Theme = {
   LIGHT: 'light-theme',
@@ -7,15 +7,17 @@ const Theme = {
 };
 
 const savedTheme = localStorage.getItem('theme');
+const getTheme = () => {
+  savedTheme === Theme.DARK ? (refThemeSwitcher.checked = true) : '';
+  refBody.className = savedTheme || Theme.LIGHT;
+};
 
 const changeTheme = () => {
   localStorage.setItem('theme', classReplace());
-  bodyTheme.className = classReplace();
+  refBody.className = classReplace();
 };
 const classReplace = () =>
-  bodyTheme.className === Theme.LIGHT ? Theme.DARK : Theme.LIGHT;
+  refBody.className === Theme.LIGHT ? Theme.DARK : Theme.LIGHT;
 
-savedTheme === Theme.DARK ? (refThemeSwitcher.checked = true) : '';
-bodyTheme.className = savedTheme || Theme.LIGHT;
-
+getTheme();
 refThemeSwitcher.addEventListener('click', changeTheme);
