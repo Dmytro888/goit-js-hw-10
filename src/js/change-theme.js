@@ -8,14 +8,12 @@ const Theme = {
 
 const savedTheme = localStorage.getItem('theme');
 
-const changeTheme = event => {
-  localStorage.setItem(
-    'theme',
-    bodyTheme.className === Theme.LIGHT ? Theme.DARK : Theme.LIGHT,
-  );
-  bodyTheme.className =
-    bodyTheme.className === Theme.LIGHT ? Theme.DARK : Theme.LIGHT;
+const changeTheme = () => {
+  localStorage.setItem('theme', classReplace());
+  bodyTheme.className = classReplace();
 };
+const classReplace = () =>
+  bodyTheme.className === Theme.LIGHT ? Theme.DARK : Theme.LIGHT;
 
 savedTheme === Theme.DARK ? (refThemeSwitcher.checked = true) : '';
 bodyTheme.className = savedTheme || Theme.LIGHT;
