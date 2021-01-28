@@ -6,17 +6,17 @@ const Theme = {
   DARK: 'dark-theme',
 };
 
-const savedTheme = localStorage.getItem('theme');
 const getTheme = () => {
+  const savedTheme = localStorage.getItem('theme');
   savedTheme === Theme.DARK ? (refThemeSwitcher.checked = true) : '';
   refBody.className = savedTheme || Theme.LIGHT;
 };
 
 const changeTheme = () => {
-  localStorage.setItem('theme', classReplace());
-  refBody.className = classReplace();
+  localStorage.setItem('theme', themeReplace());
+  refBody.className = themeReplace();
 };
-const classReplace = () =>
+const themeReplace = () =>
   refBody.className === Theme.LIGHT ? Theme.DARK : Theme.LIGHT;
 
 getTheme();
